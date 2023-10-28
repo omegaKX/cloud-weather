@@ -28,15 +28,14 @@
 </head>
 <body>
     <div id="navbar">
-        <a id="cwiLink" href="#">CWI</a>
+        <a id="englishLink" href="#">English</a>
+        <a id="chineseSimplifiedLink" href="#">中文（简体）</a>
+        <a id="chineseTraditionalLink" href="#">中文（繁體）</a>
     </div>
     <h1 id="title">Welcome to My Multilingual Website</h1>
     <p>Select a language:</p>
-    <button id="englishButton">English</button>
-    <button id="chineseSimplifiedButton">中文（简体）</button>
-    <button id="chineseTraditionalButton">中文（繁體）</button>
     
-    <div id="cwiContent" style="display: none;">
+    <div id="cwiContent">
         <!-- CWI content goes here -->
         <p>The Cloud White Index (CWI) is an innovative measurement that quantifies the brightness and whiteness of clouds in the sky. It plays a pivotal role in shaping weather patterns by reflecting sunlight and heat, affecting temperature, precipitation, and atmospheric wind patterns.</p>
         <p>CWI represents a significant advancement in our understanding of the relationship between clouds and weather. Meteorologists and climate scientists can use it to enhance weather predictions and climate-related research.</p>
@@ -59,10 +58,9 @@
         };
 
         const titleElement = document.getElementById("title");
-        const englishButton = document.getElementById("englishButton");
-        const chineseSimplifiedButton = document.getElementById("chineseSimplifiedButton");
-        const chineseTraditionalButton = document.getElementById("chineseTraditionalButton");
-        const cwiLink = document.getElementById("cwiLink");
+        const englishLink = document.getElementById("englishLink");
+        const chineseSimplifiedLink = document.getElementById("chineseSimplifiedLink");
+        const chineseTraditionalLink = document.getElementById("chineseTraditionalLink");
         const cwiContent = document.getElementById("cwiContent");
 
         // Function to update content based on the selected language
@@ -80,22 +78,17 @@
             }
         }
 
-        // Event listeners for language buttons
-        englishButton.addEventListener("click", () => {
+        // Event listeners for language links
+        englishLink.addEventListener("click", () => {
             updateContent("english");
         });
 
-        chineseSimplifiedButton.addEventListener("click", () => {
+        chineseSimplifiedLink.addEventListener("click", () => {
             updateContent("chineseSimplified");
         });
 
-        chineseTraditionalButton.addEventListener("click", () => {
+        chineseTraditionalLink.addEventListener("click", () => {
             updateContent("chineseTraditional");
-        });
-
-        // Event listener for CWI link to display CWI content
-        cwiLink.addEventListener("click", () => {
-            cwiContent.style.display = "block";
         });
 
         // Initialize with the default language (e.g., English)
