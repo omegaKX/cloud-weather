@@ -1,98 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Multilingual Website</title>
+    <title>CWI Cloud Whiteness Index</title>
     <style>
-        /* Basic CSS for the navbar */
-        #navbar {
-            background-color: #333;
-            overflow: hidden;
+        body {
+            font-family: Arial, sans-serif;
         }
-
-        #navbar a {
-            float: left;
-            display: block;
-            color: white;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
             text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
         }
-
-        /* Style the navbar links on hover */
-        #navbar a:hover {
-            background-color: #ddd;
-            color: black;
+        .index-content {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div id="navbar">
-        <a id="englishLink" href="#">English</a>
-        <a id="chineseSimplifiedLink" href="#">中文（简体）</a>
-        <a id="chineseTraditionalLink" href="#">中文（繁體）</a>
-    </div>
-    <h1 id="title">Welcome to My Multilingual Website</h1>
-    <p>Select a language:</p>
-    
-    <div id="cwiContent">
-        <!-- CWI content goes here -->
-        <p>The Cloud White Index (CWI) is an innovative measurement that quantifies the brightness and whiteness of clouds in the sky. It plays a pivotal role in shaping weather patterns by reflecting sunlight and heat, affecting temperature, precipitation, and atmospheric wind patterns.</p>
-        <p>CWI represents a significant advancement in our understanding of the relationship between clouds and weather. Meteorologists and climate scientists can use it to enhance weather predictions and climate-related research.</p>
+    <div class="container">
+        <h1>CWI Cloud Whiteness Index</h1>
+        <label for="language-toggle">Language:</label>
+        <select id="language-toggle">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="ch">Chinese</option>
+        </select>
+        <div class="index-content" id="en">
+            <h2>English Content</h2>
+            <!-- Add your English content related to the CWI here -->
+        </div>
+        <div class="index-content" id="de">
+            <h2>Deutsch Inhalt</h2>
+            <!-- Add your German content related to the CWI here -->
+        </div>
+        <div class="index-content" id="fr">
+            <h2>Contenu en Français</h2>
+            <!-- Add your French content related to the CWI here -->
+        </div>
+        <div class="index-content" id="it">
+            <h2>Contenuto in Italiano</h2>
+            <!-- Add your Italian content related to the CWI here -->
+        </div>
+        <div class="index-content" id="ch">
+            <h2>中文内容</h2>
+            <!-- Add your Chinese content related to the CWI here -->
+        </div>
     </div>
 
     <script>
-        // English content
-        const englishContent = {
-            title: "Welcome to My Multilingual Website",
-        };
+        // Function to show/hide content based on language selection
+        function updateContent() {
+            const language = document.getElementById("language-toggle").value;
 
-        // Chinese (Simplified) content
-        const chineseSimplifiedContent = {
-            title: "欢迎来到我的多语言网站",
-        };
-
-        // Chinese (Traditional) content
-        const chineseTraditionalContent = {
-            title: "歡迎來到我的多語言網站",
-        };
-
-        const titleElement = document.getElementById("title");
-        const englishLink = document.getElementById("englishLink");
-        const chineseSimplifiedLink = document.getElementById("chineseSimplifiedLink");
-        const chineseTraditionalLink = document.getElementById("chineseTraditionalLink");
-        const cwiContent = document.getElementById("cwiContent");
-
-        // Function to update content based on the selected language
-        function updateContent(language) {
-            switch (language) {
-                case "english":
-                    titleElement.textContent = englishContent.title;
-                    break;
-                case "chineseSimplified":
-                    titleElement.textContent = chineseSimplifiedContent.title;
-                    break;
-                case "chineseTraditional":
-                    titleElement.textContent = chineseTraditionalContent.title;
-                    break;
+            // Hide all content
+            const allContent = document.getElementsByClassName("index-content");
+            for (const content of allContent) {
+                content.style.display = "none";
             }
+
+            // Show the selected content
+            document.getElementById(language).style.display = "block";
         }
 
-        // Event listeners for language links
-        englishLink.addEventListener("click", () => {
-            updateContent("english");
-        });
+        // Add an event listener to the language toggle
+        document.getElementById("language-toggle").addEventListener("change", updateContent);
 
-        chineseSimplifiedLink.addEventListener("click", () => {
-            updateContent("chineseSimplified");
-        });
-
-        chineseTraditionalLink.addEventListener("click", () => {
-            updateContent("chineseTraditional");
-        });
-
-        // Initialize with the default language (e.g., English)
-        updateContent("english");
+        // Initial update
+        updateContent();
     </script>
 </body>
 </html>
